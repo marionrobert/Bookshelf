@@ -54,6 +54,7 @@ def edit(id):
 
 @app.route("/delete/<int:id>", methods=["GET"])
 def delete(id):
+    # book_id = request.args.get('id')
     if request.method == "GET":
         book_to_delete = db.session.execute(db.select(Book).filter_by(id=id)).scalar_one()
         db.session.delete(book_to_delete)
