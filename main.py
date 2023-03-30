@@ -10,8 +10,6 @@ app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///new-books-collection.db"
 # app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
-all_books = []
-
 
 # CREATE TABLE
 class Book(db.Model):
@@ -30,18 +28,16 @@ db.create_all()
 
 @app.route('/')
 def home():
+    all_books = db.session.query(Book).all()
     return render_template("index.html", books=all_books, nb_books=len(all_books))
 
 
 @app.route("/add", methods=["GET", "POST"])
 def add():
     if request.method == "POST":
-        new_book = {
-            "title": request.form["title"],
-            "author": request.form["author"],
-            "rating": int(request.form["rating"])
-        }
-        all_books.append(new_book)
+        new_book = Book(title=request.form["title"], author=request.form["author"], rating=float(request.form["rating"]))
+        db.session.add(new_book)
+        db.session.commit()
     return render_template("add.html")
 
 
