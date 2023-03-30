@@ -35,10 +35,21 @@ def home():
 @app.route("/add", methods=["GET", "POST"])
 def add():
     if request.method == "POST":
-        new_book = Book(title=request.form["title"], author=request.form["author"], rating=float(request.form["rating"]))
+        new_book = Book(title=request.form["title"], author=request.form["author"], rating=request.form["rating"])
         db.session.add(new_book)
         db.session.commit()
+        return redirect(url_for("home"))
     return render_template("add.html")
+
+
+@app.route("/edit/<int:id>", methods=["GET", "POST"])
+def edit(id):
+    book_to_update = db.session.execute(db.select(Book).filter_by(id=id)).scalar_one()
+    if request.method == "POST":
+        book_to_update.rating = request.form["rating"]
+        db.session.commit()
+        return redirect(url_for("home"))
+    return render_template("edit.html", book=book_to_update)
 
 
 if __name__ == "__main__":
