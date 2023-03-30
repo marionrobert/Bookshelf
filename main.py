@@ -52,6 +52,15 @@ def edit(id):
     return render_template("edit.html", book=book_to_update)
 
 
+@app.route("/delete/<int:id>", methods=["GET"])
+def delete(id):
+    if request.method == "GET":
+        book_to_delete = db.session.execute(db.select(Book).filter_by(id=id)).scalar_one()
+        db.session.delete(book_to_delete)
+        db.session.commit()
+    return redirect(url_for("home"))
+
+
 if __name__ == "__main__":
     app.run(debug=True)
 
