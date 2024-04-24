@@ -1,3 +1,5 @@
+(english below)
+
 # Application de Gestion de Collection de Livres
 
 ## Introduction
@@ -42,3 +44,49 @@ Ce projet consiste à créer une application web permettant aux utilisateurs de 
 - Ce projet a été réalisé dans le cadre du cours [100 Days of Code: The Complete Python Pro Bootcamp](https://www.udemy.com/course/100-days-of-code/) d'Angela Yu sur la plateforme Udemy.
 
 Vous pouvez ajouter des instructions supplémentaires sur la configuration de l'environnement, l'utilisation des fonctionnalités, et d'autres détails spécifiques selon vos besoins. N'hésitez pas à personnaliser le contenu du README en fonction des détails uniques de votre projet.
+
+---
+---
+
+# Book Collection Management Application
+
+## Introduction
+This project aims to create a web application that allows users to manage a collection of books by adding, modifying, and deleting books in a SQLite database using Flask and SQLAlchemy.
+
+## Features
+- Displaying the list of existing books.
+- Adding a new book with title, author, and rating.
+- Modifying the rating of an existing book.
+- Deleting a book from the collection.
+
+## Requirements
+- Python 3.x
+- Flask
+- Flask-SQLAlchemy
+
+## Installation and Configuration
+1. Make sure you have Python installed on your system.
+2. Install the required packages using pip and the `requirements.txt` file: `pip install -r requirements.txt`.
+3. Ensure you have Google Chrome installed on your system (for development and testing purposes).
+4. Run the `main.py` script to start the Flask application.
+
+## Usage
+1. Access the URL provided by Flask in your browser.
+2. On the home page, you can view the list of existing books and add new books.
+3. You can also modify or delete books using the corresponding links.
+
+## Project Structure
+- `main.py`: The main script of the Flask application.
+- `templates/`: Directory containing HTML files for web pages.
+    - `index.html`: Home page displaying the list of books and options to add, modify, and delete books.
+    - `add.html`: Form for adding a new book to the collection.
+    - `edit.html`: Form for modifying the rating of an existing book in the collection.
+- `static/`: Optional directory for static files like CSS style sheets or JavaScript scripts (not used in this example).
+- `new-books-collection.db`: SQLite database file for storing book information.
+- `requirements.txt`: File containing the list of Python packages required for the application.
+
+## Notes
+- This project uses Flask as the web framework for Python.
+- SQLAlchemy is used for managing the SQLite database and manipulating Python objects.
+- Make sure to configure environment variables and paths according to your system configuration.
+- This project was completed as part of the [100 Days of Code: The Complete Python Pro Bootcamp](https://www.udemy.com/course/100-days-of-code/) by Angela Yu on Udemy.
